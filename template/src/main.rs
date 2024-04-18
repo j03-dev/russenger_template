@@ -1,13 +1,4 @@
-use russenger::{
-    button::Button,
-    create_action,
-    generic::{GenericElement, GenericModel},
-    payload::Payload,
-    quick_replies::{QuickReply, QuickReplyModel},
-    russenger_app,
-    text::TextModel,
-    Data, Req, Res,
-};
+use russenger::prelude::*;
 
 create_action!(Main, |res: Res, req: Req| async move {
     res.send(TextModel::new(&req.user, "Main, I'm your chatbot!"))
