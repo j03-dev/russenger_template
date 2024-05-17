@@ -1,6 +1,7 @@
 use russenger::prelude::*;
 
-create_action!(Main, |res: Res, req: Req| async move {
+#[action]
+async fn Main (res: Res, req: Req) {
     res.send(TextModel::new(&req.user, "Main, I'm your chatbot!"))
         .await;
 
@@ -17,15 +18,17 @@ create_action!(Main, |res: Res, req: Req| async move {
         replies,
     ))
     .await;
-});
+}
 
-create_action!(Option1, |res: Res, req: Req| async move {
+#[action]
+async fn Option1(res: Res, req: Req){
     let value: String = req.data.get_value();
     let message = format!("You selected Option 1 with payload: {}", value);
     res.send(TextModel::new(&req.user, &message)).await;
-});
+}
 
-create_action!(Option2, |res: Res, req: Req| async move {
+#[action]
+async fn Option2(res: Res, req: Req){
     let value: String = req.data.get_value();
     let message = format!("You selected Option 2 with payload: {}", value);
     res.send(TextModel::new(&req.user, &message)).await;
@@ -46,6 +49,6 @@ create_action!(Option2, |res: Res, req: Req| async move {
         req.data.get_page(),
     ))
     .await;
-});
+}
 
 russenger_app!(Main, Option1, Option2);
