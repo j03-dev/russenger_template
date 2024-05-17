@@ -6,5 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-russenger = "0.1.4"
+russenger = "0.1.5"
 actix-web = "^4"
