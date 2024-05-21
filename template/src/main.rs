@@ -38,7 +38,7 @@ async fn Option2(res: Res, req: Req){
         "https://example.com/option2.jpg",
         "Option 2 description",
         vec![Button::Postback {
-            title: "Choose Option 2",
+            title: "Choose Option 2".to_string(),
             payload: Payload::new(Main, None),
         }],
     )];
