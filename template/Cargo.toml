@@ -6,7 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-russenger = "0.2.0"
+russenger = { version = "0.3.0-rc", features = ["sqlite"] }
 actix-web = "^4"
 sqlx = "^0.7.0"
-rusql-alchemy = { version = "0.1.2", features = ["sqlite"] }
