@@ -3,17 +3,20 @@ use russenger::prelude::*;
 
 
 #[action]
-async fn Main(res: Res, req: Req) {
+async fn index(res: Res, req: Req) -> Result<()> {
     res.send(TextModel::new(&req.user, "HelloWord")).await?;
     Ok(())
 }
 
 #[russenger::main]
-async fn main() -> error::Result<()> {
-    let conn = Database::new().await.conn;
+async fn main() -> Result<()> {
+    let conn = Database::new().await?.conn;
     migrate!([RussengerUser], &conn);
-    russenger::actions![Main];
-    russenger::launch().await?;
+
+    App::new().await?
+        .attach(Router::new().add("/", index))
+        .launch()
+        .await?
 
     Ok(())
 }
