@@ -2,7 +2,6 @@ use russenger::models::RussengerUser;
 use russenger::prelude::*;
 
 
-#[action]
 async fn index(res: Res, req: Req) -> Result<()> {
     res.send(TextModel::new(&req.user, "HelloWord")).await?;
     Ok(())
